@@ -2,4 +2,4 @@
 
 ## Intro
 
-Ads NewRelic instrumentation to Liebre consumers and publishers
+Adds NewRelic instrumentation to Liebre consumers and publishers
