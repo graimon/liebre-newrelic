@@ -27,3 +27,4 @@ module LiebreNewRelic
 end
 
 Liebre::Runner::Starter::Consumer.send :include, LiebreNewRelic::Instrumentation::Consumer
+Liebre::Runner::Starter::RPC.send :include, LiebreNewRelic::Instrumentation::Consumer
