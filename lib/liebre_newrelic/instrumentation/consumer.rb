@@ -9,7 +9,14 @@ module LiebreNewRelic
         base.class_eval do
           include NewRelic::Agent::Instrumentation::ControllerInstrumentation
           
-          add_transaction_tracer :call_consumer, :name => "call_consumer", :category => :task
+          alias_method :orig_call_consumer, :call_consumer
+          
+          def call_consumer payload, meta
+            NewRelic::Agent.set_transaction_name "#{klass.name}/consume"
+            orig_call_consumer payload, meta
+          end
+          add_transaction_tracer :call_consumer, :category => :task
+          
         end
         
       end
